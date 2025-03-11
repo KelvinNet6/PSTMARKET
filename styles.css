@@ -171,17 +171,23 @@ button {
     background-color: #f59e0b;
     color: white;
 }
+/*login container style*/
 .login-container {
     background-color: #1e1e1e;
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     width: 350px;
+    max-width: 90%;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 h2 {
