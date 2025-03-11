@@ -1,18 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
     let ctx = document.getElementById("candlestickChart").getContext("2d");
 
-    let candlestickChart = new Chart(ctx, {
-        type: "candlestick",
+    let lineChart = new Chart(ctx, {
+        type: "line",
         data: {
+            labels: Array.from({ length: 20 }, (_, i) => i + 1),
             datasets: [{
-                label: "Candlestick Data",
-                data: generateCandlestickData(),
+                label: "Price Data",
+                data: generateLineData(),
                 borderColor: "#3b82f6",
-                color: {
-                    up: "#22c55e",
-                    down: "#ef4444",
-                    unchanged: "#eab308"
-                }
+                backgroundColor: "rgba(59, 130, 246, 0.2)",
+                borderWidth: 2,
+                pointRadius: 0,
+                fill: true
             }]
         },
         options: {
@@ -33,29 +33,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    function generateCandlestickData() {
-        let data = [];
-        let time = Date.now();
-        for (let i = 0; i < 20; i++) {
-            let open = Math.random() * 50 + 2000;
-            let close = open + (Math.random() - 0.5) * 20;
-            let high = Math.max(open, close) + Math.random() * 10;
-            let low = Math.min(open, close) - Math.random() * 10;
-            data.push({ x: time, o: open, h: high, l: low, c: close });
-            time += 60000;
-        }
-        return data;
+    function generateLineData() {
+        return Array.from({ length: 20 }, () => (Math.random() * 50 + 2000).toFixed(2));
     }
 
     function updateChart() {
-        let newData = generateCandlestickData();
-        candlestickChart.data.datasets[0].data.push(...newData);
-        if (candlestickChart.data.datasets[0].data.length > 50) {
-            candlestickChart.data.datasets[0].data.splice(0, newData.length);
+        let newData = (Math.random() * 50 + 2000).toFixed(2);
+        lineChart.data.labels.push(lineChart.data.labels.length + 1);
+        lineChart.data.datasets[0].data.push(newData);
+        if (lineChart.data.datasets[0].data.length > 50) {
+            lineChart.data.labels.shift();
+            lineChart.data.datasets[0].data.shift();
         }
-        candlestickChart.update();
+        lineChart.update();
     }
 
     setInterval(updateChart, 5000);
 });
-
