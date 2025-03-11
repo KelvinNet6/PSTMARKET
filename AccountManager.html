@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">PST MARKET</div>
+        <div class="menu">
+            <a href="index.html">Trade</a>
+            <a href="#">Leaderboard</a>
+            <a href="#">Buy Crypto</a>
+            <a href="#">Bridges</a>
+            <a href="#">Referral</a>
+        </div>
+        <button class="connect-wallet">Connect Wallet</button>
+    </div>
+    
+    <div class="settings-container">
+        <h2>Account Settings</h2>
+        
+        <div class="settings-section">
+            <h3>Profile Information</h3>
+            <label>Username: <input type="text" value="User123"></label>
+            <label>Email: <input type="email" value="user@example.com"></label>
+            <button class="save-btn">Save Changes</button>
+        </div>
+        
+        <div class="settings-section">
+            <h3>Security Settings</h3>
+            <button class="change-password">Change Password</button>
+            <label><input type="checkbox"> Enable Two-Factor Authentication (2FA)</label>
+            <button class="save-btn">Save</button>
+        </div>
+        
+        <div class="settings-section">
+            <h3>Trading Preferences</h3>
+            <label>Default Trading Pair: <select><option>BTC/USDT</option><option>ETH/USDT</option></select></label>
+            <label><input type="checkbox"> Enable Order Confirmation</label>
+            <button class="save-btn">Save</button>
+        </div>
+        
+        <div class="settings-section">
+            <h3>Wallet & Funds</h3>
+            <p>Linked Wallet: 0x1234...abcd</p>
+            <button class="wallet-btn">Manage Wallet</button>
+        </div>
+        
+        <div class="settings-section">
+            <h3>Notifications & Alerts</h3>
+            <label><input type="checkbox"> Price Alerts</label>
+            <label><input type="checkbox"> Order Execution Notifications</label>
+            <button class="save-btn">Save</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
