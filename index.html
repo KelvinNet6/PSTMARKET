@@ -3,48 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PST Trades</title>
+    <title>PST Trades - Forex Trading</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/candlestick-chart-js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="trading-platform">
         <header>
             <h1>PST TRADES</h1>
-            <button class="connect-btn">Connect Broker</button>
+            <button class="connect-wallet">Connect Wallet</button>
         </header>
         <main>
-            <section class="chart">
-                <h2>EUR/USD</h2>
-                <canvas id="candlestickChart" width="400" height="200"></canvas>
-                <div class="chart-placeholder">Not Available</div>
-            </section>
-            <section class="trade-panel">
-                <h2>Trade Options</h2>
-                <button class="trade-btn">Market Order</button>
-                <button class="trade-btn">Limit Order</button>
-                <label for="leverage">Leverage:</label>
-                <select id="leverage">
-                    <option>1:10</option>
-                    <option>1:50</option>
+            <div class="chart-container">
+                <canvas id="candlestickChart"></canvas>
+            </div>
+            <div class="trade-panel">
+                <h2>Trade</h2>
+                <label for="market">Market</label>
+                <select id="market">
+                    <option value="EURUSD">EUR/USD</option>
+                    <option value="GBPUSD">GBP/USD</option>
+                    <option value="USDJPY">USD/JPY</option>
                 </select>
-            </section>
-            <section class="trade-history">
-                <h2>Trade History</h2>
-                <table>
-                    <tr>
-                        <th>Order Type</th>
-                        <th>Profit/Loss</th>
-                    </tr>
-                    <tr>
-                        <td>Market</td>
-                        <td>+50 USD</td>
-                    </tr>
-                    <tr>
-                        <td>Limit</td>
-                        <td>-20 USD</td>
-                    </tr>
-                </table>
-            </section>
+                <label for="amount">Amount</label>
+                <input type="number" id="amount" placeholder="Enter amount">
+                <button class="buy">Buy</button>
+                <button class="sell">Sell</button>
+            </div>
         </main>
     </div>
     <script src="script.js"></script>
