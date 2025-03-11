@@ -70,7 +70,14 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Settings saved successfully!");
         });
     });
-
+    
+ const walletButton = document.querySelector(".connect-wallet");
+    if (walletButton) {
+        walletButton.addEventListener("click", function () {
+           window.location.href = "https://kelvinnet6.github.io/PaySheet/";
+        });
+    }
+    
     const changePasswordButton = document.querySelector(".change-password");
     if (changePasswordButton) {
         changePasswordButton.addEventListener("click", function () {
