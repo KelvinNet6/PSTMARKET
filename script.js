@@ -60,10 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     setInterval(updateChart, 5000);
-});
-//------------------------------
 
-document.addEventListener("DOMContentLoaded", function () {
+    // Event Listeners for Settings & Wallet Actions
     const saveButtons = document.querySelectorAll(".save-btn");
     saveButtons.forEach(button => {
         button.addEventListener("click", function () {
@@ -71,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
     
-const connectWalletButton = document.querySelector(".connect-wallet");
+    const connectWalletButton = document.querySelector(".connect-wallet");
     if (connectWalletButton) {
         connectWalletButton.addEventListener("click", function () {
             window.location.href = "https://kelvinnet6.github.io/PaySheet/";
@@ -91,7 +89,7 @@ const connectWalletButton = document.querySelector(".connect-wallet");
     const walletButton = document.querySelector(".wallet-btn");
     if (walletButton) {
         walletButton.addEventListener("click", function () {
-           window.location.href = "https://kelvinnet6.github.io/PaySheet/";
+            window.location.href = "https://kelvinnet6.github.io/PaySheet/";
         });
     }
 
@@ -102,3 +100,4 @@ const connectWalletButton = document.querySelector(".connect-wallet");
         });
     }
 });
+
