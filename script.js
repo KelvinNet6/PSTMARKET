@@ -1,6 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
     let ctx = document.getElementById("candlestickChart").getContext("2d");
 
+    // Update currency pair details dynamically
+    function updateCurrencyPair() {
+        document.getElementById("pair-name").textContent = "EUR/USD";
+        document.getElementById("pair-price").textContent = "$1.205";
+        document.getElementById("pair-high").textContent = "$1.210";
+        document.getElementById("pair-low").textContent = "$1.190";
+        document.getElementById("pair-liquidity").textContent = "$2.5B";
+    }
+
+    updateCurrencyPair();
+
     let lineChart = new Chart(ctx, {
         type: "line",
         data: {
