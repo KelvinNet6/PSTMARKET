@@ -38,3 +38,18 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Sell order placed!");
     });
 });
+document.querySelector('.settings-btn').addEventListener('click', function() {
+    alert('Settings page will open!');
+});
+
+document.querySelector('.history-btn').addEventListener('click', function() {
+    alert('Opening full trade history...');
+});
+
+document.querySelector('.new-order').addEventListener('click', function() {
+    alert('Opening new order panel...');
+});
+
+document.querySelector('.log-out').addEventListener('click', function() {
+    alert('Logging out...');
+});
