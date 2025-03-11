@@ -16,12 +16,18 @@ document.addEventListener("DOMContentLoaded", function () {
             }]
         },
         options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
             scales: {
                 x: {
-                    ticks: { color: "white" }
+                    ticks: { color: "white" },
+                    grid: { color: "rgba(255, 255, 255, 0.1)" }
                 },
                 y: {
-                    ticks: { color: "white" }
+                    ticks: { color: "white" },
+                    grid: { color: "rgba(255, 255, 255, 0.1)" }
                 }
             }
         }
@@ -30,8 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function generateCandlestickData() {
         let data = [];
         let time = Date.now();
-        for (let i = 0; i < 10; i++) {
-            let open = Math.random() * 100 + 2000;
+        for (let i = 0; i < 20; i++) {
+            let open = Math.random() * 50 + 2000;
             let close = open + (Math.random() - 0.5) * 20;
             let high = Math.max(open, close) + Math.random() * 10;
             let low = Math.min(open, close) - Math.random() * 10;
@@ -41,8 +47,15 @@ document.addEventListener("DOMContentLoaded", function () {
         return data;
     }
 
-    setInterval(() => {
-        candlestickChart.data.datasets[0].data = generateCandlestickData();
+    function updateChart() {
+        let newData = generateCandlestickData();
+        candlestickChart.data.datasets[0].data.push(...newData);
+        if (candlestickChart.data.datasets[0].data.length > 50) {
+            candlestickChart.data.datasets[0].data.splice(0, newData.length);
+        }
         candlestickChart.update();
-    }, 5000);
+    }
+
+    setInterval(updateChart, 5000);
 });
+
