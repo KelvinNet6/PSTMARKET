@@ -5,36 +5,47 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .trading-platform {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
 }
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
-    padding: 10px;
+    padding: 10px 20px;
     background-color: #152238;
     border-bottom: 2px solid #1d2b3a;
 }
+
 .logo {
     font-size: 24px;
     font-weight: bold;
 }
+
 nav ul {
     list-style: none;
     display: flex;
     gap: 15px;
 }
+
 nav ul li a {
     color: white;
     text-decoration: none;
     padding: 5px 10px;
+    display: flex;
+    align-items: center;
 }
+
+nav ul li a i {
+    margin-left: 5px;
+}
+
 .connect-wallet {
     background-color: #007bff;
     border: none;
@@ -43,6 +54,7 @@ nav ul li a {
     cursor: pointer;
     border-radius: 5px;
 }
+
 .market-info {
     display: flex;
     justify-content: space-between;
@@ -51,20 +63,23 @@ nav ul li a {
     padding: 10px;
     background-color: #1d2b3a;
 }
+
 .chart-container {
     width: 100%;
-    max-width: 800px;
-    height: 400px;
+    max-width: 900px;
+    height: 500px;
     background-color: #152238;
     padding: 20px;
     border-radius: 8px;
 }
+
 .trade-panel {
     margin-top: 20px;
     background: #1d2b3a;
     padding: 15px;
     border-radius: 8px;
 }
+
 .trade-buttons button {
     background-color: #007bff;
     border: none;
@@ -74,6 +89,7 @@ nav ul li a {
     margin: 5px;
     border-radius: 5px;
 }
+
 .sell {
     background-color: #ff3b3b;
 }
@@ -86,11 +102,12 @@ nav ul li a {
     position: fixed;
     top: 0;
     right: 0;
-    height: 100%;
+    height: calc(100% - 60px);
     border-left: 2px solid #444;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-top: 60px; /* Make space for the header */
 }
 
 .right-menu h3 {
@@ -136,3 +153,24 @@ ul {
     font-size: 12px;
     margin: 5px 0;
 }
+
+.styled-select {
+    background-color: #152238;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #333;
+    margin-top: 10px;
+}
+
+.styled-input {
+    background-color: #152238;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #333;
+    margin-top: 10px;
+}
+
