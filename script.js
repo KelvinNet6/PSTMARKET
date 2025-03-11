@@ -71,10 +71,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
     
- const walletButton = document.querySelector(".connect-wallet");
-    if (walletButton) {
-        walletButton.addEventListener("click", function () {
-           window.location.href = "https://kelvinnet6.github.io/PaySheet/";
+const connectWalletButton = document.querySelector(".connect-wallet");
+    if (connectWalletButton) {
+        connectWalletButton.addEventListener("click", function () {
+            window.location.href = "https://kelvinnet6.github.io/PaySheet/";
         });
     }
     
