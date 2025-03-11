@@ -2,40 +2,47 @@ document.addEventListener("DOMContentLoaded", function () {
     let ctx = document.getElementById("candlestickChart").getContext("2d");
 
     let candlestickChart = new Chart(ctx, {
-        type: "bar",
+        type: "candlestick",
         data: {
-            labels: ["1h", "2h", "3h", "4h", "5h", "6h"],
             datasets: [{
                 label: "Candlestick Data",
-                data: generateRandomData(),
-                backgroundColor: "#3b82f6",
-                borderColor: "#ffffff",
-                borderWidth: 1,
-            }],
+                data: generateCandlestickData(),
+                borderColor: "#3b82f6",
+                color: {
+                    up: "#22c55e",
+                    down: "#ef4444",
+                    unchanged: "#eab308"
+                }
+            }]
         },
         options: {
             scales: {
                 x: {
-                    ticks: { color: "white" },
+                    ticks: { color: "white" }
                 },
                 y: {
-                    ticks: { color: "white" },
-                },
-            },
-        },
+                    ticks: { color: "white" }
+                }
+            }
+        }
     });
 
-    function generateRandomData() {
+    function generateCandlestickData() {
         let data = [];
-        for (let i = 0; i < 6; i++) {
-            data.push(Math.floor(Math.random() * 1000) + 1000);
+        let time = Date.now();
+        for (let i = 0; i < 10; i++) {
+            let open = Math.random() * 100 + 2000;
+            let close = open + (Math.random() - 0.5) * 20;
+            let high = Math.max(open, close) + Math.random() * 10;
+            let low = Math.min(open, close) - Math.random() * 10;
+            data.push({ x: time, o: open, h: high, l: low, c: close });
+            time += 60000;
         }
         return data;
     }
 
     setInterval(() => {
-        candlestickChart.data.datasets[0].data = generateRandomData();
+        candlestickChart.data.datasets[0].data = generateCandlestickData();
         candlestickChart.update();
     }, 5000);
 });
-
