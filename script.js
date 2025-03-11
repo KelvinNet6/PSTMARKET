@@ -61,3 +61,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setInterval(updateChart, 5000);
 });
+//------------------------------
+
+document.addEventListener("DOMContentLoaded", function () {
+    const saveButtons = document.querySelectorAll(".save-btn");
+    saveButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            alert("Settings saved successfully!");
+        });
+    });
+
+    const changePasswordButton = document.querySelector(".change-password");
+    if (changePasswordButton) {
+        changePasswordButton.addEventListener("click", function () {
+            let newPassword = prompt("Enter your new password:");
+            if (newPassword) {
+                alert("Password changed successfully!");
+            }
+        });
+    }
+
+    const walletButton = document.querySelector(".wallet-btn");
+    if (walletButton) {
+        walletButton.addEventListener("click", function () {
+            alert("Redirecting to wallet management...");
+        });
+    }
+
+    const settingsButton = document.querySelector(".settings-btn");
+    if (settingsButton) {
+        settingsButton.addEventListener("click", function () {
+            window.location.href = "AccountManager.html";
+        });
+    }
+});
