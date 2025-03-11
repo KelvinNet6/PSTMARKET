@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const walletButton = document.querySelector(".wallet-btn");
     if (walletButton) {
         walletButton.addEventListener("click", function () {
-            alert("Redirecting to wallet management...");
+           window.location.href = "https://kelvinnet6.github.io/PaySheet/";
         });
     }
 
