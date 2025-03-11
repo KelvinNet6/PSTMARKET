@@ -3,102 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PaySheetTrader - Forex Trading</title>
-    <link rel="stylesheet" href="styles.css"> <!-- External CSS File -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js for displaying forex charts -->
-    <script src="https://cdn.jsdelivr.net/npm/socket.io-client/dist/socket.io.min.js"></script> <!-- For real-time updates -->
+    <title>PST Forex Trading</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>PaySheetTrader - Forex Trading Platform</h1>
-        <nav>
-            <ul>
-                <li><a href="#dashboard">Dashboard</a></li>
-                <li><a href="#transactions">Transactions</a></li>
-                <li><a href="#reports">Reports</a></li>
-                <li><a href="#settings">Settings</a></li>
-            </ul>
-        </nav>
-    </header>
-    
     <div class="container">
-        <!-- Left Sidebar -->
-        <div class="sidebar-left">
-            <section id="dashboard">
-                <h2>Trading Dashboard</h2>
-                
-                <!-- Forex Chart Container -->
-                <div id="chart-container">
-                    <canvas id="forex-chart"></canvas>
-                </div>
-                
-                <!-- Balance and Net Profit Display -->
-                <div id="balance-summary">
-                    <p><strong>Balance:</strong> $1000</p>
-                    <p><strong>Net Profit:</strong> $0</p>
-                </div>
+        <header>
+            <h1>PST Forex Trading</h1>
+            <button class="connect-btn">Connect Broker</button>
+        </header>
+        <main>
+            <section class="chart">
+                <h2>EUR/USD</h2>
+                <div class="chart-placeholder">Candlestick Chart</div>
             </section>
-        </div>
-
-        <!-- Right Sidebar (Buy/Sell) -->
-        <div class="sidebar-right">
-            <!-- Order Placement Section -->
-            <div id="order-form">
-                <h3>Place New Order</h3>
-                <form id="trade-form">
-                    <label for="order-type">Order Type:</label>
-                    <select id="order-type">
-                        <option value="buy">Buy</option>
-                        <option value="sell">Sell</option>
-                    </select><br><br>
-                    <label for="currency-pair">Currency Pair:</label>
-                    <input type="text" id="currency-pair" placeholder="e.g. EUR/USD"><br><br>
-                    <label for="amount">Amount:</label>
-                    <input type="number" id="amount" placeholder="Amount to trade"><br><br>
-                    <button type="submit" id="buy-button" class="order-button buy">Buy</button>
-                    <button type="submit" id="sell-button" class="order-button sell">Sell</button>
-                </form>
-            </div>
-        </div>
+            <section class="trade-panel">
+                <h2>Trade Options</h2>
+                <button class="trade-btn">Market Order</button>
+                <button class="trade-btn">Limit Order</button>
+                <label for="leverage">Leverage:</label>
+                <select id="leverage">
+                    <option>1:10</option>
+                    <option>1:50</option>
+                </select>
+            </section>
+            <section class="trade-history">
+                <h2>Trade History</h2>
+                <table>
+                    <tr>
+                        <th>Order Type</th>
+                        <th>Profit/Loss</th>
+                    </tr>
+                    <tr>
+                        <td>Market</td>
+                        <td>+50 USD</td>
+                    </tr>
+                    <tr>
+                        <td>Limit</td>
+                        <td>-20 USD</td>
+                    </tr>
+                </table>
+            </section>
+        </main>
     </div>
-
-    <!-- Transaction Logs Section -->
-    <section id="transactions">
-        <h2>Transaction History</h2>
-        <table id="transaction-table">
-            <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>Currency Pair</th>
-                    <th>Order Type</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                    <th>Profit/Loss</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Dynamic transaction rows will be injected here by JavaScript -->
-            </tbody>
-        </table>
-    </section>
-
-    <!-- Reports Section -->
-    <section id="reports">
-        <h2>Trading Reports</h2>
-        <p>Generate and view detailed reports of your trading activity here.</p>
-    </section>
-
-    <!-- Settings Section -->
-    <section id="settings">
-        <h2>Settings</h2>
-        <p>Manage your account settings here.</p>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 PaySheetTrader</p>
-    </footer>
-
-    <!-- External JavaScript File -->
-    <script src="script.js"></script>
 </body>
 </html>
