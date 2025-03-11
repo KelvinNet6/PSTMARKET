@@ -1,53 +1,34 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #0e1b2a;
-    color: white;
+    background-color: #0f172a;
+    color: #ffffff;
     margin: 0;
     padding: 0;
 }
 
-.trading-platform {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
-header {
+/* Navbar */
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #152238;
-    border-bottom: 2px solid #1d2b3a;
+    padding: 15px 20px;
+    background-color: #1e293b;
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-}
-
-nav ul li a {
-    color: white;
+.menu a {
+    color: #ffffff;
     text-decoration: none;
-    padding: 5px 10px;
-    display: flex;
-    align-items: center;
-}
-
-nav ul li a i {
-    margin-left: 5px;
+    margin: 0 15px;
 }
 
 .connect-wallet {
-    background-color: #007bff;
+    background-color: #3b82f6;
     border: none;
     padding: 10px 15px;
     color: white;
@@ -55,122 +36,33 @@ nav ul li a i {
     border-radius: 5px;
 }
 
-.market-info {
+/* Trading Container */
+.trading-container {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    padding: 10px;
-    background-color: #1d2b3a;
+    padding: 20px;
 }
 
 .chart-container {
-    width: 100%;
-    max-width: 900px;
-    height: 500px;
-    background-color: #152238;
+    flex: 2;
+    background: #1e293b;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
-.trade-panel {
-    margin-top: 20px;
-    background: #1d2b3a;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-.trade-buttons button {
-    background-color: #007bff;
-    border: none;
-    padding: 10px 15px;
-    color: white;
-    cursor: pointer;
-    margin: 5px;
-    border-radius: 5px;
-}
-
-.sell {
-    background-color: #ff3b3b;
-}
-
-.right-menu {
-    width: 300px;
-    background-color: #1c1c1c;
-    color: #fff;
+.trade-history {
+    flex: 1;
+    background: #1e293b;
     padding: 20px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: calc(100% - 60px);
-    border-left: 2px solid #444;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 60px; /* Make space for the header */
+    margin-left: 20px;
+    border-radius: 10px;
 }
 
-.right-menu h3 {
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: #00bcd4;
-}
-
-.account-info p, .trade-history ul li {
-    font-size: 14px;
-    margin: 8px 0;
-}
-
-button {
-    background-color: #00bcd4;
-    border: none;
-    padding: 10px;
-    margin-top: 15px;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
+.trade-history table {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
+    border-collapse: collapse;
 }
 
-button i {
-    margin-right: 10px;
-}
-
-button:hover {
-    background-color: #0097a7;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.trade-history ul li {
-    font-size: 12px;
-    margin: 5px 0;
-}
-
-.styled-select {
-    background-color: #152238;
-    color: white;
+.trade-history th, .trade-history td {
     padding: 10px;
-    border-radius: 5px;
-    width: 100%;
-    border: 1px solid #333;
-    margin-top: 10px;
+    border-bottom: 1px solid #334155;
 }
-
-.styled-input {
-    background-color: #152238;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    width: 100%;
-    border: 1px solid #333;
-    margin-top: 10px;
-}
-
