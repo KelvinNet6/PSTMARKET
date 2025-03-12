@@ -103,6 +103,35 @@ body {
     color: white;
     border-radius: 5px;
 }
+.trade-list {
+    margin-top: 10px;
+    padding: 10px;
+    background: #1e1e1e;
+    color: white;
+    border-radius: 5px;
+}
+
+.trade-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.trade-item button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.trade-item button:hover {
+    background: darkred;
+}
+
 /* Buttons Group */
 .buttons {
     display: flex;
