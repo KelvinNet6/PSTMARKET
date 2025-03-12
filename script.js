@@ -159,5 +159,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (event.target.classList.contains("settings-btn")) {
             window.location.href = "AccountManager.html";
         }
+
+        if (event.target.classList.contains("connect-wallet")) {
+            window.location.href = "https://kelvinnet6.github.io/PaySheet/"; 
+        }
     });
 });
