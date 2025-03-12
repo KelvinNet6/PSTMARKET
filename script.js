@@ -172,6 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+//open market overview modal
 document.addEventListener("DOMContentLoaded", function () {
     const openModalButton = document.getElementById("open-market-overview");
     const modal = document.getElementById("market-overview-modal");
@@ -179,11 +180,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Open the modal when "Market Overview" is clicked
     openModalButton.addEventListener("click", function () {
-        modal.style.left = "0";
+        modal.classList.add("open"); // Add "open" class to slide the modal in
     });
 
     // Close the modal when the close button is clicked
     closeModalButton.addEventListener("click", function () {
-        modal.style.left = "-50%";
+        modal.classList.remove("open"); // Remove "open" class to slide the modal out
     });
 });
