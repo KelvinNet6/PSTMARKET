@@ -301,3 +301,38 @@ button {
     right: 20px;
     z-index: 3;
 }
+.currency-pair {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+
+.currency-pair .flag-icon {
+    width: 30px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.currency-pair p {
+    flex-grow: 1;
+    font-size: 16px;
+    color: white;
+}
+
+.trade-btn {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.trade-btn:hover {
+    background-color: #2563eb;
+}
