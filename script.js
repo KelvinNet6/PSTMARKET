@@ -69,6 +69,30 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Currency Pair Data (for demo purposes, replace with API data later)
+    const currencyData = {
+        "EUR/USD": { price: 1.205, high: 1.210, low: 1.190, liquidity: "$2.5B" },
+        "GBP/USD": { price: 1.375, high: 1.380, low: 1.350, liquidity: "$3.0B" },
+        "USD/JPY": { price: 110.25, high: 110.50, low: 109.80, liquidity: "$1.0B" },
+        "CHF/USD": { price: 1.10, high: 1.15, low: 1.05, liquidity: "$500M" },
+        "CAD/USD": { price: 1.25, high: 1.27, low: 1.20, liquidity: "$1.2B" },
+        "AUD/USD": { price: 0.72, high: 0.75, low: 0.70, liquidity: "$600M" },
+        "NZD/USD": { price: 0.68, high: 0.70, low: 0.65, liquidity: "$400M" },
+        "ZAR/USD": { price: 15.10, high: 15.30, low: 14.90, liquidity: "$200M" },
+    };
+
+    // Function to Update Pair Details
+    function updatePairDetails(pair) {
+        const data = currencyData[pair];
+
+        // Update Pair Details
+        document.getElementById("pair-name").textContent = pair;
+        document.getElementById("pair-price").textContent = `$${data.price}`;
+        document.getElementById("pair-high").textContent = `$${data.high}`;
+        document.getElementById("pair-low").textContent = `$${data.low}`;
+        document.getElementById("pair-liquidity").textContent = data.liquidity;
+    }
+
     // Function to Update Chart Periodically
     function updateChart() {
         let newData = parseFloat((Math.random() * 50 + 2000).toFixed(2));
@@ -149,7 +173,24 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".connect-wallet")?.addEventListener("click", function () {
         window.location.href = "https://kelvinnet6.github.io/PaySheet/";
     });
+   document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("change-password")) {
+            let newPassword = prompt("Enter your new password:");
+            if (newPassword) alert("Password changed successfully!");
+        }
 
+        if (event.target.classList.contains("wallet-btn")) {
+            window.location.href = "https://kelvinnet6.github.io/PaySheet/";
+        }
+
+        if (event.target.classList.contains("settings-btn")) {
+            window.location.href = "AccountManager.html";
+        }
+
+        if (event.target.classList.contains("connect-wallet")) {
+            window.location.href = "https://kelvinnet6.github.io/PaySheet/"; 
+        }
+    });
     // Opening Market Overview Modal
     const openModalButton = document.getElementById("open-market-overview");
     const modal = document.getElementById("market-overview-modal");
@@ -169,47 +210,14 @@ document.addEventListener("DOMContentLoaded", function () {
             const pair = this.getAttribute("data-pair");
             const price = this.getAttribute("data-price");
 
-            // Update pair details
-            document.getElementById("pair-name").textContent = pair;
-            document.getElementById("pair-price").textContent = `$${price}`;
+            // Update pair details with selected pair's data
+            updatePairDetails(pair);
+
             // Close the modal
             modal.classList.remove("open");
 
             // Trigger chart update with selected pair
             updateChart();
         });
-    });
-});
-// Account & Wallet Event Listeners
-    document.querySelectorAll(".save-btn").forEach(button => {
-        button.addEventListener("click", function () {
-            alert("Settings saved successfully!");
-        });
-    });
-
-    document.querySelector(".connect-wallet")?.addEventListener("click", function () {
-        window.location.href = "https://kelvinnet6.github.io/PaySheet/";
-    });
-
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    document.addEventListener("click", function (event) {
-        if (event.target.classList.contains("change-password")) {
-            let newPassword = prompt("Enter your new password:");
-            if (newPassword) alert("Password changed successfully!");
-        }
-
-        if (event.target.classList.contains("wallet-btn")) {
-            window.location.href = "https://kelvinnet6.github.io/PaySheet/";
-        }
-
-        if (event.target.classList.contains("settings-btn")) {
-            window.location.href = "AccountManager.html";
-        }
-
-        if (event.target.classList.contains("connect-wallet")) {
-            window.location.href = "https://kelvinnet6.github.io/PaySheet/"; 
-        }
     });
 });
