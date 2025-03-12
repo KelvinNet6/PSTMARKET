@@ -69,28 +69,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Currency Pair Data (for demo purposes, replace with API data later)
-    const currencyData = {
-        "EUR/USD": { price: 1.205, high: 1.210, low: 1.190, liquidity: "$2.5B" },
-        "GBP/USD": { price: 1.375, high: 1.380, low: 1.350, liquidity: "$3.0B" },
-        "USD/JPY": { price: 110.25, high: 110.50, low: 109.80, liquidity: "$1.0B" },
-        "CHF/USD": { price: 1.10, high: 1.15, low: 1.05, liquidity: "$500M" },
-        "CAD/USD": { price: 1.25, high: 1.27, low: 1.20, liquidity: "$1.2B" },
-        "AUD/USD": { price: 0.72, high: 0.75, low: 0.70, liquidity: "$600M" },
-        "NZD/USD": { price: 0.68, high: 0.70, low: 0.65, liquidity: "$400M" },
-        "ZAR/USD": { price: 15.10, high: 15.30, low: 14.90, liquidity: "$200M" },
-    };
-
     // Function to Update Pair Details
-    function updatePairDetails(pair) {
-        const data = currencyData[pair];
-
+    function updatePairDetails(pair, price, high, low, liquidity) {
         // Update Pair Details
         document.getElementById("pair-name").textContent = pair;
-        document.getElementById("pair-price").textContent = `$${data.price}`;
-        document.getElementById("pair-high").textContent = `$${data.high}`;
-        document.getElementById("pair-low").textContent = `$${data.low}`;
-        document.getElementById("pair-liquidity").textContent = data.liquidity;
+        document.getElementById("pair-price").textContent = `$${price}`;
+        document.getElementById("pair-high").textContent = `$${high}`;
+        document.getElementById("pair-low").textContent = `$${low}`;
+        document.getElementById("pair-liquidity").textContent = liquidity;
     }
 
     // Function to Update Chart Periodically
@@ -173,8 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".connect-wallet")?.addEventListener("click", function () {
         window.location.href = "https://kelvinnet6.github.io/PaySheet/";
     });
-    
-     document.addEventListener("click", function (event) {
+    document.addEventListener("click", function (event) {
         if (event.target.classList.contains("settings-btn")) {
             window.location.href = "AccountManager.html";
         }
@@ -197,9 +182,12 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
             const pair = this.getAttribute("data-pair");
             const price = this.getAttribute("data-price");
+            const high = this.getAttribute("data-high");
+            const low = this.getAttribute("data-low");
+            const liquidity = this.getAttribute("data-liquidity");
 
             // Update pair details with selected pair's data
-            updatePairDetails(pair);
+            updatePairDetails(pair, price, high, low, liquidity);
 
             // Close the modal after the trade button is clicked
             modal.classList.remove("open");
