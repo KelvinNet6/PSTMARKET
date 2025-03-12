@@ -9,17 +9,30 @@
 <body>
     
     <div class="navbar">
-    <div class="logo">PST MARKET</div>
-    <div class="menu">
-        <a href="home.html">Trade</a>
-        <a href="#">Market Overview</a>
-        <a href="#">Economic Calendar</a> 
-        <a href="#">News Feed</a> 
-         <a href="#">Live Market Prices</a> 
+        <div class="logo">PST MARKET</div>
+        <div class="menu">
+            <a href="#">Trade</a>
+            <a href="#" id="open-market-overview">Market Overview</a>
+            <a href="#">Economic Calendar</a> 
+            <a href="#">News Feed</a> 
+            <a href="#">Live Market Prices</a> 
+        </div>
+        <button class="connect-wallet">Connect Wallet</button>
+        <button class="logout-btn">Logout</button>
     </div>
-    <button class="connect-wallet">Connect Wallet</button>
-    <button class="logout-btn">Logout</button>
-</div>
+
+    <!-- Market Overview Modal -->
+    <div id="market-overview-modal" class="market-overview-modal">
+        <div class="market-overview-content">
+            <span class="close-btn" id="close-market-overview">&times;</span>
+            <h3>Market Overview</h3>
+            <div class="market-details">
+                <p><strong>EUR/USD:</strong> $1.205</p>
+                <p><strong>GBP/USD:</strong> $1.375</p>
+                <p><strong>USD/JPY:</strong> $110.25</p>
+            </div>
+        </div>
+    </div>
     
     <div class="settings-container">
         <h2>Account Settings</h2>
