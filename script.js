@@ -177,6 +177,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const openModalButton = document.getElementById("open-market-overview");
     const modal = document.getElementById("market-overview-modal");
     const closeModalButton = document.getElementById("close-market-overview");
+    const tradeButtons = document.querySelectorAll(".trade-btn");
+    let lineChart;
 
     // Open the modal when "Market Overview" is clicked
     openModalButton.addEventListener("click", function () {
@@ -187,4 +189,20 @@ document.addEventListener("DOMContentLoaded", function () {
     closeModalButton.addEventListener("click", function () {
         modal.classList.remove("open"); // Remove "open" class to slide the modal out
     });
+
+    // Event listener for updating pair details and closing the modal
+    document.querySelectorAll(".trade-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            const pair = this.getAttribute("data-pair");
+            const price = this.getAttribute("data-price");
+
+            // Update pair details
+            document.getElementById("pair-name").textContent = pair;
+            document.getElementById("pair-price").textContent = `$${price}`;
+            // Close the modal
+            modal.classList.remove("open");
+
+            // Trigger chart update with selected pair
+            updateChart();
+        });
 });
