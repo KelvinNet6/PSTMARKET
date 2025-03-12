@@ -265,3 +265,19 @@ button {
     margin-top: 30px;
 }
 
+/* Video Container inside Market Overview Modal */
+.video-container {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.video-container h4 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
