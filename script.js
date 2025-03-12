@@ -150,42 +150,15 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "https://kelvinnet6.github.io/PaySheet/";
     });
 
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    document.addEventListener("click", function (event) {
-        if (event.target.classList.contains("change-password")) {
-            let newPassword = prompt("Enter your new password:");
-            if (newPassword) alert("Password changed successfully!");
-        }
-
-        if (event.target.classList.contains("wallet-btn")) {
-            window.location.href = "https://kelvinnet6.github.io/PaySheet/";
-        }
-
-        if (event.target.classList.contains("settings-btn")) {
-            window.location.href = "AccountManager.html";
-        }
-
-        if (event.target.classList.contains("connect-wallet")) {
-            window.location.href = "https://kelvinnet6.github.io/PaySheet/"; 
-        }
-    });
-});
-//open market overview modal
-document.addEventListener("DOMContentLoaded", function () {
+    // Opening Market Overview Modal
     const openModalButton = document.getElementById("open-market-overview");
     const modal = document.getElementById("market-overview-modal");
     const closeModalButton = document.getElementById("close-market-overview");
-    const tradeButtons = document.querySelectorAll(".trade-btn");
-    let lineChart;
 
-    // Open the modal when "Market Overview" is clicked
     openModalButton.addEventListener("click", function () {
         modal.classList.add("open"); // Add "open" class to slide the modal in
     });
 
-    // Close the modal when the close button is clicked
     closeModalButton.addEventListener("click", function () {
         modal.classList.remove("open"); // Remove "open" class to slide the modal out
     });
@@ -205,4 +178,5 @@ document.addEventListener("DOMContentLoaded", function () {
             // Trigger chart update with selected pair
             updateChart();
         });
+    });
 });
