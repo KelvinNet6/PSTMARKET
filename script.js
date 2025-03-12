@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("You have been logged out.");
         window.location.href = "index.html"; // Redirect to the login page
     });
-})
+});
 
 document.addEventListener("DOMContentLoaded", function () {
     let ctx = document.getElementById("candlestickChart").getContext("2d");
@@ -173,11 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".connect-wallet")?.addEventListener("click", function () {
         window.location.href = "https://kelvinnet6.github.io/PaySheet/";
     });
-   document.addEventListener("click", function (event) {
-        if (event.target.classList.contains("settings-btn")) {
-            window.location.href = "AccountManager.html";
-        }
-    });
+
     // Opening Market Overview Modal
     const openModalButton = document.getElementById("open-market-overview");
     const modal = document.getElementById("market-overview-modal");
@@ -200,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Update pair details with selected pair's data
             updatePairDetails(pair);
 
-            // Close the modal
+            // Close the modal after the trade button is clicked
             modal.classList.remove("open");
 
             // Trigger chart update with selected pair
@@ -208,6 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
 document.querySelectorAll(".save-btn").forEach(button => {
         button.addEventListener("click", function () {
             alert("Settings saved successfully!");
