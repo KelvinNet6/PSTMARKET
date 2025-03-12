@@ -27,14 +27,29 @@ body {
     margin: 0 15px;
 }
 
-.connect-wallet {
-    background-color: #3b82f6;
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.connect-wallet, .logout-btn {
+    padding: 8px 15px;
     border: none;
-    padding: 10px 15px;
-    color: white;
     cursor: pointer;
+    font-size: 14px;
     border-radius: 5px;
 }
+
+.connect-wallet {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.logout-btn {
+    background-color: #f44336;
+    color: white;
+}
+
 
 /* Trading Container */
 .trading-container {
