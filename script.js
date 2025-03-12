@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".logout-btn").addEventListener("click", function () {
+        alert("You have been logged out.");
+        window.location.href = "login.html"; // Redirect to the login page
+    });
+})
+
+document.addEventListener("DOMContentLoaded", function () {
     let ctx = document.getElementById("candlestickChart").getContext("2d");
     let tradeList = document.getElementById("trade-list");
 
