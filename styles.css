@@ -227,11 +227,12 @@ button {
     background-color: #f59e0b;
     color: white;
 }
-/* Style for Markett Overview Modal */
+
+/* Style for Market Overview Modal */
 .market-overview-modal {
     position: fixed;
     top: 0;
-    left: -50%;
+    left: 0;
     width: 50%;
     height: 100%;
     background-color: #2c3e50;
@@ -239,6 +240,13 @@ button {
     z-index: 1000;
     padding: 20px;
     color: white;
+    visibility: hidden; /* Modal is hidden by default */
+    opacity: 0; /* Hide the modal */
+}
+
+.market-overview-modal.open {
+    visibility: visible; /* Show the modal when it has the "open" class */
+    opacity: 1; /* Fade in the modal */
 }
 
 .market-overview-modal .market-overview-content {
@@ -252,6 +260,10 @@ button {
     position: absolute;
     top: 10px;
     right: 20px;
+}
+
+.market-overview-modal .market-details {
+    margin-top: 30px;
 }
 
 .market-overview-modal .market-details {
