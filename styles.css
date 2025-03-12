@@ -90,7 +90,18 @@ body {
     margin: 20px auto;
     color: white;
 }
+.trade-input {
+    flex-grow: 1;
+}
 
+.trade-input input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #444;
+    background-color: #222;
+    color: white;
+    border-radius: 5px;
+}
 /* Buttons Group */
 .buttons {
     display: flex;
