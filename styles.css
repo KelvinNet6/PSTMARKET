@@ -92,6 +92,7 @@ body {
 }
 .trade-input {
     flex-grow: 1;
+    max-width: 200px;
 }
 
 .trade-input input {
