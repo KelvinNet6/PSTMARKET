@@ -180,3 +180,36 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+// Account & Wallet Event Listeners
+    document.querySelectorAll(".save-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            alert("Settings saved successfully!");
+        });
+    });
+
+    document.querySelector(".connect-wallet")?.addEventListener("click", function () {
+        window.location.href = "https://kelvinnet6.github.io/PaySheet/";
+    });
+
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("change-password")) {
+            let newPassword = prompt("Enter your new password:");
+            if (newPassword) alert("Password changed successfully!");
+        }
+
+        if (event.target.classList.contains("wallet-btn")) {
+            window.location.href = "https://kelvinnet6.github.io/PaySheet/";
+        }
+
+        if (event.target.classList.contains("settings-btn")) {
+            window.location.href = "AccountManager.html";
+        }
+
+        if (event.target.classList.contains("connect-wallet")) {
+            window.location.href = "https://kelvinnet6.github.io/PaySheet/"; 
+        }
+    });
+});
