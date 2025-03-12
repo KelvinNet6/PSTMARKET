@@ -232,24 +232,47 @@ button {
 .market-overview-modal {
     position: fixed;
     top: 0;
-    left: -50%; /* Initially hidden off the screen */
+    left: 0;
     width: 50%;
     height: 100%;
     background-color: #2c3e50;
-    transition: left 0.5s ease, visibility 0.5s ease;
+    transition: left 0.5s ease, visibility 0s 0.5s;
     z-index: 1000;
-    padding: 20px;
     color: white;
     visibility: hidden; /* Hidden by default */
 }
 
 .market-overview-modal.open {
     left: 0; /* Slide in the modal */
-    visibility: visible; /* Make it visible */
+    visibility: visible;
+    transition: left 0.5s ease, visibility 0s;
 }
 
-.market-overview-modal .market-overview-content {
-    margin-top: 50px;
+/* Video container style */
+.video-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+/* Style for Video */
+.background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the video fills the entire modal */
+}
+
+/* Style for Market Details */
+.market-details {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+    font-size: 18px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background */
+    padding: 15px;
+    border-radius: 8px;
 }
 
 .market-overview-modal .close-btn {
@@ -259,25 +282,4 @@ button {
     position: absolute;
     top: 10px;
     right: 20px;
-}
-
-.market-overview-modal .market-details {
-    margin-top: 30px;
-}
-
-/* Video Container inside Market Overview Modal */
-.video-container {
-    margin-top: 20px;
-    width: 100%;
-}
-
-.video-container h4 {
-    color: white;
-    margin-bottom: 10px;
-}
-
-video {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
 }
