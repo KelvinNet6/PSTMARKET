@@ -208,6 +208,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+document.querySelectorAll(".save-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            alert("Settings saved successfully!");
+        });
+    });
 document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("click", function (event) {
         if (event.target.classList.contains("change-password")) {
