@@ -173,7 +173,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".connect-wallet")?.addEventListener("click", function () {
         window.location.href = "https://kelvinnet6.github.io/PaySheet/";
     });
-
+    
+     document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("settings-btn")) {
+            window.location.href = "AccountManager.html";
+        }
+    });
     // Opening Market Overview Modal
     const openModalButton = document.getElementById("open-market-overview");
     const modal = document.getElementById("market-overview-modal");
