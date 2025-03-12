@@ -260,6 +260,9 @@ button {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Ensure the video fills the entire modal */
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 /* Style for Market Details */
@@ -270,7 +273,7 @@ button {
     z-index: 2;
     font-size: 18px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background for text visibility */
     padding: 15px;
     border-radius: 8px;
 }
