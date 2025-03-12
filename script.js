@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
     let ctx = document.getElementById("candlestickChart").getContext("2d");
 
+    // Generate Initial Price Data
+    function generateLineData() {
+        return Array.from({ length: 20 }, () => parseFloat((Math.random() * 50 + 2000).toFixed(2)));
+    }
+
     let priceData = generateLineData();
     let lineChart = new Chart(ctx, {
         type: "line",
@@ -23,7 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     backgroundColor: "red",
                     borderWidth: 2,
                     pointRadius: 5,
-                    showLine: false
+                    showLine: false,
+                    parsing: false
                 },
                 {
                     label: "Trade Lines",
@@ -32,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     borderWidth: 1,
                     pointRadius: 0,
                     fill: false,
-                    stepped: true
+                    stepped: true,
+                    parsing: false
                 }
             ]
         },
@@ -54,23 +61,23 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    function generateLineData() {
-        return Array.from({ length: 20 }, () => (Math.random() * 50 + 2000).toFixed(2));
-    }
-
+    // Function to Update Chart Periodically
     function updateChart() {
-        let newData = (Math.random() * 50 + 2000).toFixed(2);
+        let newData = parseFloat((Math.random() * 50 + 2000).toFixed(2));
         lineChart.data.labels.push(lineChart.data.labels.length + 1);
         lineChart.data.datasets[0].data.push(newData);
+
         if (lineChart.data.datasets[0].data.length > 50) {
             lineChart.data.labels.shift();
             lineChart.data.datasets[0].data.shift();
         }
+
         lineChart.update();
     }
 
     setInterval(updateChart, 5000);
 
+    // Buy & Sell Button Event Listeners
     document.querySelector(".buy-btn").addEventListener("click", function () {
         placeTrade("buy");
     });
@@ -79,74 +86,53 @@ document.addEventListener("DOMContentLoaded", function () {
         placeTrade("sell");
     });
 
+    // Function to Mark Trades on Chart
     function placeTrade(type) {
         let tradeAmount = parseFloat(document.getElementById("trade-amount").value) || 1;
         let currentPrice = lineChart.data.datasets[0].data[lineChart.data.datasets[0].data.length - 1];
         let tradeIndex = lineChart.data.labels.length - 1;
 
-        // Add trade point
+        // Add Trade Point
         lineChart.data.datasets[1].data.push({ x: tradeIndex, y: currentPrice });
-        lineChart.data.datasets[2].data.push({ x: tradeIndex, y: currentPrice }, { x: tradeIndex + 5, y: currentPrice });
-        lineChart.update();
-    }
 
-});
-
-
-    function generateLineData() {
-        return Array.from({ length: 20 }, () => (Math.random() * 50 + 2000).toFixed(2));
-    }
-
-    function updateChart() {
-        let newData = (Math.random() * 50 + 2000).toFixed(2);
-        lineChart.data.labels.push(lineChart.data.labels.length + 1);
-        lineChart.data.datasets[0].data.push(newData);
-        if (lineChart.data.datasets[0].data.length > 50) {
-            lineChart.data.labels.shift();
-            lineChart.data.datasets[0].data.shift();
+        // Add Trade Line (Extending Forward)
+        let futureIndex = tradeIndex + 5;
+        if (futureIndex > lineChart.data.labels.length - 1) {
+            futureIndex = lineChart.data.labels.length - 1;
         }
+
+        lineChart.data.datasets[2].data.push(
+            { x: tradeIndex, y: currentPrice },
+            { x: futureIndex, y: currentPrice }
+        );
+
         lineChart.update();
     }
 
-    setInterval(updateChart, 5000);
-
-    // Event Listeners for Settings & Wallet Actions
-    const saveButtons = document.querySelectorAll(".save-btn");
-    saveButtons.forEach(button => {
+    // Account & Wallet Event Listeners
+    document.querySelectorAll(".save-btn").forEach(button => {
         button.addEventListener("click", function () {
             alert("Settings saved successfully!");
         });
     });
-    
-    const connectWalletButton = document.querySelector(".connect-wallet");
-    if (connectWalletButton) {
-        connectWalletButton.addEventListener("click", function () {
-            window.location.href = "https://kelvinnet6.github.io/PaySheet/";
-        });
-    }
-    
-    const changePasswordButton = document.querySelector(".change-password");
-    if (changePasswordButton) {
-        changePasswordButton.addEventListener("click", function () {
-            let newPassword = prompt("Enter your new password:");
-            if (newPassword) {
-                alert("Password changed successfully!");
-            }
-        });
-    }
 
-    const walletButton = document.querySelector(".wallet-btn");
-    if (walletButton) {
-        walletButton.addEventListener("click", function () {
-            window.location.href = "https://kelvinnet6.github.io/PaySheet/";
-        });
-    }
+    document.querySelector(".connect-wallet")?.addEventListener("click", function () {
+        window.location.href = "https://kelvinnet6.github.io/PaySheet/";
+    });
 
-    const settingsButton = document.querySelector(".settings-btn");
-    if (settingsButton) {
-        settingsButton.addEventListener("click", function () {
-            window.location.href = "AccountManager.html";
-        });
-    }
+    document.querySelector(".change-password")?.addEventListener("click", function () {
+        let newPassword = prompt("Enter your new password:");
+        if (newPassword) alert("Password changed successfully!");
+    });
+
+    document.querySelector(".wallet-btn")?.addEventListener("click", function () {
+        window.location.href = "https://kelvinnet6.github.io/PaySheet/";
+    });
+
+    document.querySelector(".settings-btn")?.addEventListener("click", function () {
+        window.location.href = "AccountManager.html";
+    });
+
 });
+
 
