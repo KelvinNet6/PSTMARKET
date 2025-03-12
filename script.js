@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".logout-btn").addEventListener("click", function () {
         alert("You have been logged out.");
-        window.location.href = "login.html"; // Redirect to the login page
+        window.location.href = "index.html"; // Redirect to the login page
     });
 })
 
