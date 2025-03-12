@@ -240,6 +240,7 @@ button {
     z-index: 1000;
     color: white;
     visibility: hidden; /* Hidden by default */
+    overflow: hidden; /* Prevents scrollbars */
 }
 
 .market-overview-modal.open {
@@ -247,45 +248,56 @@ button {
     visibility: visible; /* Make it visible */
 }
 
-.market-overview-modal .market-overview-content {
-    margin-top: 50px;
+/* Centering content inside modal */
+.market-overview-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
 }
 
 /* Video container style */
 .video-container {
     position: relative;
-    height: 100%;
     width: 100%;
+    height: 100%;
+    overflow: hidden; /* Ensures video does not overflow */
 }
 
 /* Style for Video */
 .background-video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure the video fills the entire modal */
-    position: absolute;
-    top: 0;
-    left: 0;
+    object-fit: cover; /* Ensures the video fills the modal */
+    display: block;
 }
 
 /* Style for Market Details */
 .market-details {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the market details */
     z-index: 2;
-    font-size: 18px;
+    font-size: 20px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background for text visibility */
-    padding: 15px;
-    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background for better visibility */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%; /* Increased width for better layout */
 }
 
+/* Close button */
 .market-overview-modal .close-btn {
     font-size: 30px;
     color: white;
     cursor: pointer;
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 20px;
+    z-index: 3;
 }
