@@ -143,20 +143,21 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "https://kelvinnet6.github.io/PaySheet/";
     });
 
-    document.querySelector(".change-password")?.addEventListener("click", function () {
-        let newPassword = prompt("Enter your new password:");
-        if (newPassword) alert("Password changed successfully!");
-    });
-
-    document.querySelector(".wallet-btn")?.addEventListener("click", function () {
-        window.location.href = "https://kelvinnet6.github.io/PaySheet/";
-    });
-
-    document.querySelector(".settings-btn")?.addEventListener("click", function () {
-        window.location.href = "AccountManager.html";
-    });
-
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("change-password")) {
+            let newPassword = prompt("Enter your new password:");
+            if (newPassword) alert("Password changed successfully!");
+        }
 
+        if (event.target.classList.contains("wallet-btn")) {
+            window.location.href = "https://kelvinnet6.github.io/PaySheet/";
+        }
 
+        if (event.target.classList.contains("settings-btn")) {
+            window.location.href = "AccountManager.html";
+        }
+    });
+});
