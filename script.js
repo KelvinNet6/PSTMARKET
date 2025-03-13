@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.classList.remove("open"); // Remove "open" class to slide the modal out
     });
 }) 
-
+//ecomonic calendar modal
 document.addEventListener("DOMContentLoaded", function () {
     const openCalendarBtn = document.getElementById("open-economic-calendar");
     const calendarModal = document.getElementById("economic-calendar-modal");
@@ -238,6 +238,22 @@ document.addEventListener("DOMContentLoaded", function () {
             if (event.target === calendarModal) {
                 calendarModal.classList.remove("open");
             }
+        });
+    }
+});
+//news feed modal
+document.addEventListener("DOMContentLoaded", function () {
+    const openNewsButton = document.getElementById("open-news-feed");
+    const newsModal = document.getElementById("news-feed-modal");
+    const closeNewsButton = document.getElementById("close-news-feed");
+
+    if (openNewsButton && newsModal && closeNewsButton) {
+        openNewsButton.addEventListener("click", function () {
+            newsModal.classList.add("open");
+        });
+
+        closeNewsButton.addEventListener("click", function () {
+            newsModal.classList.remove("open");
         });
     }
 });
