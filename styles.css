@@ -549,7 +549,7 @@ button {
 /* Ensure iframe takes full width & increased height */
 .market-frame {
     width: 100%;
-    height: 450px; /* Increased height */
+    height: 600px; /* Increased height */
 }
 
 .market-frame iframe {
