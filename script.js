@@ -144,7 +144,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".sell-btn")?.addEventListener("click", function () {
         placeTrade("sell");
     });
-});
 
     document.querySelectorAll(".save-btn").forEach(button => {
         button.addEventListener("click", function () {
@@ -157,10 +156,8 @@ document.addEventListener("DOMContentLoaded", function () {
             let newPassword = prompt("Enter your new password:");
             if (newPassword) alert("Password changed successfully!");
         }
-        if (event.target.classList.contains("wallet-btn") || event.target.classList.contains("connect-wallet")) {
-            window.location.href = "https://kelvinnet6.github.io/PaySheet/";
-        }
     });
+});
      document.addEventListener("click", function (event) {
         if (event.target.classList.contains("settings-btn")) {
             window.location.href = "AccountManager.html";
