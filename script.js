@@ -234,4 +234,4 @@ document.addEventListener("DOMContentLoaded", function () {
     closeModalButton.addEventListener("click", function () {
         modal.classList.remove("open"); // Remove "open" class to slide the modal out
     });
-})
+}) 
