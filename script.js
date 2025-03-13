@@ -249,35 +249,35 @@ document.addEventListener("DOMContentLoaded", function () {
     const newsContainer = document.querySelector(".news-articles");
 
     async function fetchForexNews() {
-        const apiKey = "000f61be42364a83bd5545c9a39a08d7"; // Replace with your API Key
-        const url = `https://newsapi.org/v2/everything?q=forex OR trading OR market&language=en&sortBy=publishedAt&apiKey=${apiKey}`;
+    const url = `https://api.twelvedata.com/news?source=forex&apikey=67cabce73b5a4235be5a388791d66f97`;
 
-        try {
-            let response = await fetch(url);
-            let data = await response.json();
+    try {
+        let response = await fetch(url);
+        let data = await response.json();
 
-            if (data.articles.length > 0) {
-                newsContainer.innerHTML = ""; // Clear old news
+        if (data.data && data.data.length > 0) {
+            newsContainer.innerHTML = ""; // Clear old news
 
-                data.articles.slice(0, 5).forEach(article => {
-                    let newsItem = document.createElement("div");
-                    newsItem.classList.add("news-item");
-                    newsItem.innerHTML = `
-                        <h3>${article.title}</h3>
-                        <p>${article.description}</p>
-                        <a href="${article.url}" target="_blank">Read more</a>
-                        <hr>
-                    `;
-                    newsContainer.appendChild(newsItem);
-                });
-            } else {
-                newsContainer.innerHTML = "<p>No recent news found.</p>";
-            }
-        } catch (error) {
-            newsContainer.innerHTML = "<p>Error fetching news.</p>";
-            console.error("News Fetch Error:", error);
+            data.data.slice(0, 5).forEach(article => {
+                let newsItem = document.createElement("div");
+                newsItem.classList.add("news-item");
+                newsItem.innerHTML = `
+                    <h3>${article.title}</h3>
+                    <p>${article.description || "No description available."}</p>
+                    <a href="${article.url}" target="_blank">Read more</a>
+                    <hr>
+                `;
+                newsContainer.appendChild(newsItem);
+            });
+        } else {
+            newsContainer.innerHTML = "<p>No recent news found.</p>";
         }
+    } catch (error) {
+        newsContainer.innerHTML = "<p>Error fetching news.</p>";
+        console.error("News Fetch Error:", error);
     }
+}
+
 
     if (openNewsButton && newsModal && closeNewsButton) {
         openNewsButton.addEventListener("click", function () {
