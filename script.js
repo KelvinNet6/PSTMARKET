@@ -290,12 +290,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
-// Live Market Prices Modal
-const openMarketPriceButton = document.getElementById("open-market-prices");
-const marketPriceModal = document.getElementById("market-price-modal");
-const closeMarketPriceButton = document.getElementById("close-market-prices");
 
-if (openMarketPriceButton && marketPriceModal && closeMarketPriceButton) {
-    openMarketPriceButton.addEventListener("click", () => marketPriceModal.classList.add("open"));
-    closeMarketPriceButton.addEventListener("click", () => marketPriceModal.classList.remove("open"));
-}
+document.getElementById("open-market-prices").addEventListener("click", () => {
+    document.getElementById("market-price-modal").classList.add("open");
+});
+
+document.getElementById("close-market-prices").addEventListener("click", () => {
+    document.getElementById("market-price-modal").classList.remove("open");
+});
+
