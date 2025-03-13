@@ -157,13 +157,13 @@ document.addEventListener("DOMContentLoaded", function () {
             if (newPassword) alert("Password changed successfully!");
         }
     });
-});
-
+    
      document.addEventListener("click", function (event) {
         if (event.target.classList.contains("settings-btn")) {
             window.location.href = "AccountManager.html";
         }
     });
+});
 
     const openModalButton = document.getElementById("open-market-overview");
     const modal = document.getElementById("market-overview-modal");
