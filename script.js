@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const newsContainer = document.querySelector(".news-articles");
 
     async function fetchForexNews() {
-        const apiKey = "YOUR_NEWS_API_KEY"; // Replace with your API Key
+        const apiKey = "000f61be42364a83bd5545c9a39a08d7"; // Replace with your API Key
         const url = `https://newsapi.org/v2/everything?q=forex OR trading OR market&language=en&sortBy=publishedAt&apiKey=${apiKey}`;
 
         try {
