@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
         tradePoints.forEach(trade => {
             let profitLoss = ((currentPrice - trade.entryPrice) * trade.amount).toFixed(2);
             let color = profitLoss >= 0 ? "green" : "red";
-            let text = `$${profitLoss}`;
+            let text = $${profitLoss};
             drawTradeLabel(trade.index, trade.entryPrice, text, color);
         });
     }
@@ -122,7 +122,6 @@ document.addEventListener("DOMContentLoaded", function () {
         placeTrade("sell");
     });
 });
-
     // Account & Wallet Event Listeners
     document.querySelectorAll(".save-btn").forEach(button => {
         button.addEventListener("click", function () {
