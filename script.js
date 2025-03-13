@@ -299,8 +299,27 @@ document.getElementById("close-market-prices").addEventListener("click", () => {
     document.getElementById("market-price-modal").classList.remove("open");
 });
 
-document.getElementById("symbol-selector").addEventListener("change", function () {
-    let selectedSymbol = this.value;
-    let iframe = document.getElementById("tradingview-widget");
-    iframe.src = `https://www.tradingview.com/widgetembed/?symbol=${selectedSymbol}&interval=5&theme=dark`;
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("market-price-modal");
+    const openModalBtn = document.getElementById("open-market-prices");
+    const closeModalBtn = document.getElementById("close-market-prices");
+    const pairSelector = document.getElementById("pair-selector");
+    const marketIframe = document.getElementById("market-iframe");
+
+    // Open modal
+    openModalBtn.addEventListener("click", function () {
+        modal.classList.add("open");
+    });
+
+    // Close modal
+    closeModalBtn.addEventListener("click", function () {
+        modal.classList.remove("open");
+    });
+
+    // Change iframe src when selecting a new pair
+    pairSelector.addEventListener("change", function () {
+        const selectedPair = pairSelector.value;
+        marketIframe.src = `https://www.tradingview.com/widgetembed/?symbol=${selectedPair}&interval=5&theme=dark`;
+    });
 });
+
