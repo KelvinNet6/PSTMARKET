@@ -272,7 +272,8 @@
         <button id="close-market-prices" class="close-market">&times;</button>
         <h2>Live Market Prices</h2>
 
-        <select id="symbol-selector">
+        <!-- Dropdown to select a forex pair -->
+        <select id="pair-selector" class="pair-selector">
             <option value="OANDA:EURUSD">EUR/USD</option>
             <option value="OANDA:GBPUSD">GBP/USD</option>
             <option value="OANDA:USDJPY">USD/JPY</option>
@@ -282,8 +283,14 @@
             <option value="OANDA:NZDUSD">NZD/USD</option>
             <option value="OANDA:ZARUSD">ZAR/USD</option>
         </select>
-   <br>
-        <iframe id="tradingview-widget" src="https://www.tradingview.com/widgetembed/?symbol=OANDA:EURUSD&interval=5&theme=dark" frameborder="0" allowfullscreen></iframe>
+
+        <!-- Single iframe to switch forex pairs -->
+        <div class="market-frame">
+            <iframe id="market-iframe" 
+                src="https://www.tradingview.com/widgetembed/?symbol=OANDA:EURUSD&interval=5&theme=dark" 
+                frameborder="0" allowfullscreen>
+            </iframe>
+        </div>
     </div>
 </div>
 
