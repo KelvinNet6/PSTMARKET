@@ -299,3 +299,8 @@ document.getElementById("close-market-prices").addEventListener("click", () => {
     document.getElementById("market-price-modal").classList.remove("open");
 });
 
+document.getElementById("symbol-selector").addEventListener("change", function () {
+    let selectedSymbol = this.value;
+    let iframe = document.getElementById("tradingview-widget");
+    iframe.src = `https://www.tradingview.com/widgetembed/?symbol=${selectedSymbol}&interval=5&theme=dark`;
+});
