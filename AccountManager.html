@@ -16,7 +16,7 @@
             <a href="#" id="open-market-overview">Market Overview</a>
             <a href="#" id="open-economic-calendar">Economic Calendar</a> 
             <a href="#" id="open-news-feed">News Feed</a> 
-            <a href="#">Live Market Prices</a> 
+            <a href="#" id="market-price-modal">Live Market Prices</a> 
         </div>
         <button class="connect-wallet">Connect Wallet</button>
         <button class="logout-btn">Logout</button>
@@ -157,6 +157,23 @@
         </div>
     </div>
 </div>
+
+<!-- Live Market Prices Modal -->
+<div id="market-price-modal" class="market-price-modal">
+    <div class="market-price-content">
+        <button id="close-market-prices" class="close-market">&times;</button>
+        <h2>Live Market Prices</h2>
+        <iframe 
+            id="market-prices-frame"
+            src="https://www.oanda.com/forex-trading/markets/live" 
+            width="100%" 
+            height="400px"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
     
     <script src="script.js"></script>
 </body>
