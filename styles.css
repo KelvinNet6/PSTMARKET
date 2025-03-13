@@ -452,3 +452,23 @@ button {
     top: 10px;
     right: 20px;
 }
+.news-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.news-item h3 {
+    color: #facc15;
+}
+
+.news-item p {
+    color: #e2e8f0;
+}
+
+.news-item a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: bold;
+}
