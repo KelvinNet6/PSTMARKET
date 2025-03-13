@@ -218,3 +218,26 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.classList.remove("open"); // Remove "open" class to slide the modal out
     });
 }) 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const openCalendarBtn = document.getElementById("open-economic-calendar");
+    const calendarModal = document.getElementById("economic-calendar-modal");
+    const closeCalendarBtn = document.getElementById("close-economic-calendar");
+
+    if (openCalendarBtn && calendarModal && closeCalendarBtn) {
+        openCalendarBtn.addEventListener("click", function () {
+            calendarModal.classList.add("open");
+        });
+
+        closeCalendarBtn.addEventListener("click", function () {
+            calendarModal.classList.remove("open");
+        });
+
+        // Close modal when clicking outside the content area
+        calendarModal.addEventListener("click", function (event) {
+            if (event.target === calendarModal) {
+                calendarModal.classList.remove("open");
+            }
+        });
+    }
+});
