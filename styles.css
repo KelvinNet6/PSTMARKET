@@ -336,3 +336,52 @@ button {
 .trade-btn:hover {
     background-color: #2563eb;
 }
+/* Modal background */
+.modal {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: bottom 0.5s ease-in-out;
+}
+
+/* Modal content */
+.modal-content {
+    background: white;
+    width: 90%;
+    height: 90%;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* Show modal by moving it up */
+.modal.open {
+    bottom: 0;
+}
+
+/* Iframe styling */
+.calendar-frame {
+    width: 100%;
+    height: 90%;
+    border: none;
+}
