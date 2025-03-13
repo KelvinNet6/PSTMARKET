@@ -1,19 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector(".logout-btn").addEventListener("click", function () {
-        alert("You have been logged out.");
-        window.location.href = "index.html"; 
-    });
-});
+    // Logout functionality
+    const logoutBtn = document.querySelector(".logout-btn");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", function () {
+            alert("You have been logged out.");
+            window.location.href = "index.html";
+        });
+    }
 
-document.addEventListener("DOMContentLoaded", function () {
-    let ctx = document.getElementById("candlestickChart").getContext("2d");
+    // Initialize chart
+    let ctx = document.getElementById("candlestickChart");
+    if (!ctx) return;
+    ctx = ctx.getContext("2d");
+
     let tradeList = document.getElementById("trade-list");
     let balanceDisplay = document.getElementById("balance");
-    let balance = parseFloat(balanceDisplay.textContent) || 10000; // Default balance
+    let balance = parseFloat(balanceDisplay?.textContent) || 10000;
 
     function updateBalance(amount) {
         balance += amount;
-        balanceDisplay.textContent = balance.toFixed(2);
+        if (balanceDisplay) balanceDisplay.textContent = balance.toFixed(2);
     }
 
     function generateLineData() {
@@ -90,16 +96,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setInterval(updateChart, 5000);
 
-    document.querySelector(".buy-btn").addEventListener("click", function () {
-        placeTrade("buy");
-    });
-
-    document.querySelector(".sell-btn").addEventListener("click", function () {
-        placeTrade("sell");
-    });
-
     function placeTrade(type) {
-        let tradeAmount = parseFloat(document.getElementById("trade-amount").value);
+        let tradeAmountInput = document.getElementById("trade-amount");
+        if (!tradeAmountInput) return;
+        
+        let tradeAmount = parseFloat(tradeAmountInput.value);
         if (!tradeAmount || tradeAmount <= 0) {
             alert("Please enter a valid trade amount.");
             return;
@@ -128,17 +129,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
         tradeItem.querySelector(".close-trade").addEventListener("click", function () {
             tradeItem.remove();
+            updateBalance(type === "buy" ? tradeAmount : -tradeAmount);
         });
 
-        tradeList.appendChild(tradeItem);
+        tradeList?.appendChild(tradeItem);
 
-        if (type === "buy") {
-            updateBalance(-tradeAmount);
-        } else {
-            updateBalance(tradeAmount);
-        }
+        updateBalance(type === "buy" ? -tradeAmount : tradeAmount);
     }
+
+    document.querySelector(".buy-btn")?.addEventListener("click", function () {
+        placeTrade("buy");
+    });
+
+    document.querySelector(".sell-btn")?.addEventListener("click", function () {
+        placeTrade("sell");
+    });
 });
+
     document.querySelectorAll(".save-btn").forEach(button => {
         button.addEventListener("click", function () {
             alert("Settings saved successfully!");
