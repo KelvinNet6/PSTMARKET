@@ -1,14 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const logoutBtn = document.querySelector(".logout-btn");
-    if (logoutBtn) {
-        logoutBtn.addEventListener("click", function () {
-            alert("You have been logged out.");
-            window.location.href = "index.html";
-        });
-    }
+    document.querySelector(".logout-btn").addEventListener("click", function () {
+        alert("You have been logged out.");
+        window.location.href = "index.html"; 
+    });
+});
 
+document.addEventListener("DOMContentLoaded", function () {
     let ctx = document.getElementById("candlestickChart").getContext("2d");
     let tradeList = document.getElementById("trade-list");
+    let balanceDisplay = document.getElementById("balance");
+    let balance = parseFloat(balanceDisplay.textContent) || 10000; // Default balance
+
+    function updateBalance(amount) {
+        balance += amount;
+        balanceDisplay.textContent = balance.toFixed(2);
+    }
 
     function generateLineData() {
         return Array.from({ length: 20 }, () => parseFloat((Math.random() * 50 + 2000).toFixed(2)));
@@ -69,14 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    function updatePairDetails(pair, price, high, low, liquidity) {
-        document.getElementById("pair-name").textContent = pair;
-        document.getElementById("pair-price").textContent = `$${price}`;
-        document.getElementById("pair-high").textContent = `$${high}`;
-        document.getElementById("pair-low").textContent = `$${low}`;
-        document.getElementById("pair-liquidity").textContent = liquidity;
-    }
-
     function updateChart() {
         let newData = parseFloat((Math.random() * 50 + 2000).toFixed(2));
         lineChart.data.labels.push(lineChart.data.labels.length + 1);
@@ -92,6 +90,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setInterval(updateChart, 5000);
 
+    document.querySelector(".buy-btn").addEventListener("click", function () {
+        placeTrade("buy");
+    });
+
+    document.querySelector(".sell-btn").addEventListener("click", function () {
+        placeTrade("sell");
+    });
+
     function placeTrade(type) {
         let tradeAmount = parseFloat(document.getElementById("trade-amount").value);
         if (!tradeAmount || tradeAmount <= 0) {
@@ -103,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let tradeIndex = lineChart.data.labels.length - 1;
 
         lineChart.data.datasets[1].data.push({ x: tradeIndex, y: currentPrice });
-
         let futureIndex = tradeIndex + 5;
         if (futureIndex > lineChart.data.labels.length - 1) {
             futureIndex = lineChart.data.labels.length - 1;
@@ -113,26 +118,27 @@ document.addEventListener("DOMContentLoaded", function () {
             { x: tradeIndex, y: currentPrice },
             { x: futureIndex, y: currentPrice }
         );
-
         lineChart.update();
 
         let tradeItem = document.createElement("div");
         tradeItem.classList.add("trade-item");
-        tradeItem.innerHTML = `
-            <span>${type.toUpperCase()} - $${tradeAmount} @ ${currentPrice}</span>
-            <button class="close-trade">Close</button>
-        `;
+        tradeItem.innerHTML = 
+            `<span>${type.toUpperCase()} - $${tradeAmount} @ ${currentPrice}</span>
+            <button class="close-trade">Close</button>`;
 
         tradeItem.querySelector(".close-trade").addEventListener("click", function () {
             tradeItem.remove();
         });
 
         tradeList.appendChild(tradeItem);
+
+        if (type === "buy") {
+            updateBalance(-tradeAmount);
+        } else {
+            updateBalance(tradeAmount);
+        }
     }
-
-    document.querySelector(".buy-btn")?.addEventListener("click", () => placeTrade("buy"));
-    document.querySelector(".sell-btn")?.addEventListener("click", () => placeTrade("sell"));
-
+});
     document.querySelectorAll(".save-btn").forEach(button => {
         button.addEventListener("click", function () {
             alert("Settings saved successfully!");
