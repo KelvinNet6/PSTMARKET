@@ -158,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
      document.addEventListener("click", function (event) {
         if (event.target.classList.contains("settings-btn")) {
             window.location.href = "AccountManager.html";
