@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".logout-btn").addEventListener("click", function () {
         alert("You have been logged out.");
-        window.location.href = "index.html";
+        window.location.href = "index.html"; // Redirect to the login page
     });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
     let ctx = document.getElementById("candlestickChart").getContext("2d");
     let tradeList = document.getElementById("trade-list");
-    let tradePoints = [];
 
+    // Generate Initial Price Data
     function generateLineData() {
         return Array.from({ length: 20 }, () => parseFloat((Math.random() * 50 + 2000).toFixed(2)));
     }
@@ -38,6 +38,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     pointRadius: 5,
                     showLine: false,
                     parsing: false
+                },
+                {
+                    label: "Trade Lines",
+                    data: [],
+                    borderColor: "yellow",
+                    borderWidth: 1,
+                    pointRadius: 0,
+                    fill: false,
+                    stepped: true,
+                    parsing: false
                 }
             ]
         },
@@ -59,6 +69,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Function to Update Pair Details
+    function updatePairDetails(pair, price, high, low, liquidity) {
+        // Update Pair Details
+        document.getElementById("pair-name").textContent = pair;
+        document.getElementById("pair-price").textContent = $${price};
+        document.getElementById("pair-high").textContent = $${high};
+        document.getElementById("pair-low").textContent = $${low};
+        document.getElementById("pair-liquidity").textContent = liquidity;
+    }
+
+    // Function to Update Chart Periodically
     function updateChart() {
         let newData = parseFloat((Math.random() * 50 + 2000).toFixed(2));
         lineChart.data.labels.push(lineChart.data.labels.length + 1);
@@ -69,14 +90,25 @@ document.addEventListener("DOMContentLoaded", function () {
             lineChart.data.datasets[0].data.shift();
         }
 
-        updateProfitLoss();
         lineChart.update();
     }
 
     setInterval(updateChart, 5000);
 
+    // Buy & Sell Button Event Listeners
+    document.querySelector(".buy-btn").addEventListener("click", function () {
+        placeTrade("buy");
+    });
+
+    document.querySelector(".sell-btn").addEventListener("click", function () {
+        placeTrade("sell");
+    });
+
+    // Function to Mark Trades on Chart
     function placeTrade(type) {
         let tradeAmount = parseFloat(document.getElementById("trade-amount").value);
+
+        // Ensure trade amount is entered
         if (!tradeAmount || tradeAmount <= 0) {
             alert("Please enter a valid trade amount.");
             return;
@@ -85,43 +117,38 @@ document.addEventListener("DOMContentLoaded", function () {
         let currentPrice = lineChart.data.datasets[0].data[lineChart.data.datasets[0].data.length - 1];
         let tradeIndex = lineChart.data.labels.length - 1;
 
-        tradePoints.push({ type, entryPrice: currentPrice, amount: tradeAmount, index: tradeIndex });
-
+        // Add Trade Point
         lineChart.data.datasets[1].data.push({ x: tradeIndex, y: currentPrice });
+
+        // Add Trade Line (Extending Forward)
+        let futureIndex = tradeIndex + 5;
+        if (futureIndex > lineChart.data.labels.length - 1) {
+            futureIndex = lineChart.data.labels.length - 1;
+        }
+
+        lineChart.data.datasets[2].data.push(
+            { x: tradeIndex, y: currentPrice },
+            { x: futureIndex, y: currentPrice }
+        );
+
         lineChart.update();
-    }
 
-    function updateProfitLoss() {
-        let currentPrice = lineChart.data.datasets[0].data[lineChart.data.datasets[0].data.length - 1];
-        let ctx = lineChart.ctx;
-        let chartArea = lineChart.chartArea;
+        // Add Trade Entry to List
+        let tradeItem = document.createElement("div");
+        tradeItem.classList.add("trade-item");
+        tradeItem.innerHTML = 
+            <span>${type.toUpperCase()} - $${tradeAmount} @ ${currentPrice}</span>
+            <button class="close-trade">Close</button>
+        ;
 
-        ctx.clearRect(0, 0, chartArea.right, chartArea.bottom);
-        tradePoints.forEach(trade => {
-            let profitLoss = ((currentPrice - trade.entryPrice) * trade.amount).toFixed(2);
-            let color = profitLoss >= 0 ? "green" : "red";
-            let text = $${profitLoss};
-            drawTradeLabel(trade.index, trade.entryPrice, text, color);
+        // Close Trade Button Functionality
+        tradeItem.querySelector(".close-trade").addEventListener("click", function () {
+            tradeItem.remove();
         });
+
+        tradeList.appendChild(tradeItem);
     }
 
-    function drawTradeLabel(x, y, text, color) {
-        let ctx = lineChart.ctx;
-        let xPos = lineChart.scales.x.getPixelForValue(x);
-        let yPos = lineChart.scales.y.getPixelForValue(y);
-        ctx.fillStyle = color;
-        ctx.font = "12px Arial";
-        ctx.fillText(text, xPos, yPos - 10);
-    }
-
-    document.querySelector(".buy-btn").addEventListener("click", function () {
-        placeTrade("buy");
-    });
-
-    document.querySelector(".sell-btn").addEventListener("click", function () {
-        placeTrade("sell");
-    });
-});
     // Account & Wallet Event Listeners
     document.querySelectorAll(".save-btn").forEach(button => {
         button.addEventListener("click", function () {
