@@ -158,18 +158,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    const openModalButton = document.getElementById("open-market-overview");
+ const openModalButton = document.getElementById("open-market-overview");
     const modal = document.getElementById("market-overview-modal");
     const closeModalButton = document.getElementById("close-market-overview");
 
     if (openModalButton && modal && closeModalButton) {
-        openModalButton.addEventListener("click", function () {
-            modal.classList.add("open");
-        });
-
-        closeModalButton.addEventListener("click", function () {
-            modal.classList.remove("open");
-        });
+        openModalButton.addEventListener("click", () => modal.classList.add("open"));
+        closeModalButton.addEventListener("click", () => modal.classList.remove("open"));
 
         document.querySelectorAll(".trade-btn").forEach(button => {
             button.addEventListener("click", function () {
