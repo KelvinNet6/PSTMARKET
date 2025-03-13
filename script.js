@@ -246,10 +246,43 @@ document.addEventListener("DOMContentLoaded", function () {
     const openNewsButton = document.getElementById("open-news-feed");
     const newsModal = document.getElementById("news-feed-modal");
     const closeNewsButton = document.getElementById("close-news-feed");
+    const newsContainer = document.querySelector(".news-articles");
+
+    async function fetchForexNews() {
+        const apiKey = "YOUR_NEWS_API_KEY"; // Replace with your API Key
+        const url = `https://newsapi.org/v2/everything?q=forex OR trading OR market&language=en&sortBy=publishedAt&apiKey=${apiKey}`;
+
+        try {
+            let response = await fetch(url);
+            let data = await response.json();
+
+            if (data.articles.length > 0) {
+                newsContainer.innerHTML = ""; // Clear old news
+
+                data.articles.slice(0, 5).forEach(article => {
+                    let newsItem = document.createElement("div");
+                    newsItem.classList.add("news-item");
+                    newsItem.innerHTML = `
+                        <h3>${article.title}</h3>
+                        <p>${article.description}</p>
+                        <a href="${article.url}" target="_blank">Read more</a>
+                        <hr>
+                    `;
+                    newsContainer.appendChild(newsItem);
+                });
+            } else {
+                newsContainer.innerHTML = "<p>No recent news found.</p>";
+            }
+        } catch (error) {
+            newsContainer.innerHTML = "<p>Error fetching news.</p>";
+            console.error("News Fetch Error:", error);
+        }
+    }
 
     if (openNewsButton && newsModal && closeNewsButton) {
         openNewsButton.addEventListener("click", function () {
             newsModal.classList.add("open");
+            fetchForexNews(); // Fetch news when modal opens
         });
 
         closeNewsButton.addEventListener("click", function () {
