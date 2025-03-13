@@ -180,6 +180,33 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+    const openModalButton = document.getElementById("open-market-overview");
+    const modal = document.getElementById("market-overview-modal");
+    const closeModalButton = document.getElementById("close-market-overview");
+
+    if (openModalButton && modal && closeModalButton) {
+        openModalButton.addEventListener("click", function () {
+            modal.classList.add("open");
+        });
+
+        closeModalButton.addEventListener("click", function () {
+            modal.classList.remove("open");
+        });
+
+        document.querySelectorAll(".trade-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                const pair = this.getAttribute("data-pair");
+                const price = this.getAttribute("data-price");
+                const high = this.getAttribute("data-high");
+                const low = this.getAttribute("data-low");
+                const liquidity = this.getAttribute("data-liquidity");
+                updatePairDetails(pair, price, high, low, liquidity);
+                modal.classList.remove("open");
+                updateChart();
+            });
+        });
+    }
+});
 
 document.querySelectorAll(".save-btn").forEach(button => {
         button.addEventListener("click", function () {
