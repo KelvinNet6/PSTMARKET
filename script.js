@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        let currentPrice = lineChart.data.datasets[0].data[lineChart.data.datasets[0].data.length - 1];
+        let currentPrice = lineChart.data.datasets[0].data.at(-1);
         let tradeIndex = lineChart.data.labels.length - 1;
 
         lineChart.data.datasets[1].data.push({ x: tradeIndex, y: currentPrice });
@@ -137,18 +137,11 @@ document.addEventListener("DOMContentLoaded", function () {
         updateBalance(type === "buy" ? -tradeAmount : tradeAmount);
     }
 
-    document.querySelector(".buy-btn")?.addEventListener("click", function () {
-        placeTrade("buy");
-    });
-
-    document.querySelector(".sell-btn")?.addEventListener("click", function () {
-        placeTrade("sell");
-    });
+    document.querySelector(".buy-btn")?.addEventListener("click", () => placeTrade("buy"));
+    document.querySelector(".sell-btn")?.addEventListener("click", () => placeTrade("sell"));
 
     document.querySelectorAll(".save-btn").forEach(button => {
-        button.addEventListener("click", function () {
-            alert("Settings saved successfully!");
-        });
+        button.addEventListener("click", () => alert("Settings saved successfully!"));
     });
 
     document.addEventListener("click", function (event) {
@@ -156,13 +149,35 @@ document.addEventListener("DOMContentLoaded", function () {
             let newPassword = prompt("Enter your new password:");
             if (newPassword) alert("Password changed successfully!");
         }
-    });
-    
-     document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("wallet-btn") || event.target.classList.contains("connect-wallet")) {
+            window.location.href = "https://kelvinnet6.github.io/PaySheet/";
+        }
         if (event.target.classList.contains("settings-btn")) {
             window.location.href = "AccountManager.html";
         }
     });
+
+    const openModalButton = document.getElementById("open-market-overview");
+    const modal = document.getElementById("market-overview-modal");
+    const closeModalButton = document.getElementById("close-market-overview");
+
+    if (openModalButton && modal && closeModalButton) {
+        openModalButton.addEventListener("click", () => modal.classList.add("open"));
+        closeModalButton.addEventListener("click", () => modal.classList.remove("open"));
+
+        document.querySelectorAll(".trade-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                const pair = this.getAttribute("data-pair");
+                const price = this.getAttribute("data-price");
+                const high = this.getAttribute("data-high");
+                const low = this.getAttribute("data-low");
+                const liquidity = this.getAttribute("data-liquidity");
+                updatePairDetails(pair, price, high, low, liquidity);
+                modal.classList.remove("open");
+                updateChart();
+            });
+        });
+    }
 });
 
     const openModalButton = document.getElementById("open-market-overview");
