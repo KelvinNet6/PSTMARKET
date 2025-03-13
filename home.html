@@ -272,12 +272,18 @@
         <button id="close-market-prices" class="close-market">&times;</button>
         <h2>Live Market Prices</h2>
 
-        <iframe src="https://www.tradingview.com/widgetembed/?symbol=OANDA:EURUSD&interval=5&theme=dark" frameborder="0" allowfullscreen></iframe>
-        <iframe src="https://www.tradingview.com/widgetembed/?symbol=OANDA:GBPUSD&interval=5&theme=dark" frameborder="0" allowfullscreen></iframe>
-        <iframe src="https://www.tradingview.com/widgetembed/?symbol=OANDA:CADUSD&interval=5&theme=dark" frameborder="0" allowfullscreen></iframe>
-        <iframe src="https://www.tradingview.com/widgetembed/?symbol=OANDA:AUDUSD&interval=5&theme=dark" frameborder="0" allowfullscreen></iframe>
-        <iframe src="https://www.tradingview.com/widgetembed/?symbol=OANDA:NZDUSD&interval=5&theme=dark" frameborder="0" allowfullscreen></iframe>
-        <iframe src="https://www.tradingview.com/widgetembed/?symbol=OANDA:ZARUSD&interval=5&theme=dark" frameborder="0" allowfullscreen></iframe>
+        <select id="symbol-selector">
+            <option value="OANDA:EURUSD">EUR/USD</option>
+            <option value="OANDA:GBPUSD">GBP/USD</option>
+            <option value="OANDA:USDJPY">USD/JPY</option>
+            <option value="OANDA:CHFUSD">CHF/USD</option>
+            <option value="OANDA:CADUSD">CAD/USD</option>
+            <option value="OANDA:AUDUSD">AUD/USD</option>
+            <option value="OANDA:NZDUSD">NZD/USD</option>
+            <option value="OANDA:ZARUSD">ZAR/USD</option>
+        </select>
+
+        <iframe id="tradingview-widget" src="https://www.tradingview.com/widgetembed/?symbol=OANDA:EURUSD&interval=5&theme=dark" frameborder="0" allowfullscreen></iframe>
     </div>
 </div>
 
