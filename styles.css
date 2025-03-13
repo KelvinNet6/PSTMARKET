@@ -519,14 +519,19 @@ button {
     background: #1e293b;
     padding: 20px;
     box-sizing: border-box;
+    overflow-y: auto; /* Enable scrolling if needed */
 }
 
 /* Dropdown styling */
 .pair-selector {
     width: 90%;
-    padding: 8px;
-    margin-bottom: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
     font-size: 16px;
+    background: #334155;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
 
 /* Close button */
@@ -541,10 +546,10 @@ button {
     right: 15px;
 }
 
-/* Single iframe */
+/* Ensure iframe takes full width & increased height */
 .market-frame {
     width: 100%;
-    height: 300px; /* Adjust height as needed */
+    height: 450px; /* Increased height */
 }
 
 .market-frame iframe {
